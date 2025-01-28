@@ -10,8 +10,8 @@ from influxdb_client.client.write_api import SYNCHRONOUS
 influx_url = "http://localhost:8086"
 token = os.environ.get("INFLUXDB_TOKEN")
 org = "GCU asso"
-bucket = "verif"
-csv_file = sys.argv[1]
+bucket = sys.argv[1]
+csv_file = sys.argv[2]
 
 # Connexion à InfluxDB
 client = InfluxDBClient(url=influx_url, token=token, org=org)
