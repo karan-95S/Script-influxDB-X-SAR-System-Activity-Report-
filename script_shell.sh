@@ -43,4 +43,4 @@ else
     exit 1
 fi
 
-python3 script_data_influx.py "$csv_file"
+python3 script_data_influx.py "$1" "$csv_file"
