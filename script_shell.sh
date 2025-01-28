@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Récupération de la date actuelle
-CURRENT_DATE=$(date +"%Y-%m-%d")
+# Récupération de la date du jour précédent
+DATE=$(date -d "$year-$month-$day - 1 day" +"%Y-%m-%d")
 year=$(date +"%Y")
 month=$(date +"%m")
 day=$(date +"%d")
 
 # Affichage des informations
-echo "Date actuelle : $CURRENT_DATE"
+echo "Date actuelle : $DATE"
 echo "Année : $year"
 echo "Mois : $month"
 echo "Jour : $day"
@@ -22,14 +22,14 @@ if [ ! -d "$binary_file_path" ]; then
 fi
 
 # Fichier source SAR
-binary_file="$binary_file_path/sar-$CURRENT_DATE"
+binary_file="$binary_file_path/sar-$DATE"
 if [ ! -f "$binary_file" ]; then
     echo "Erreur : Le fichier source n'existe pas -> $binary_file"
     exit 1
 fi
 
 # Génération du fichier CSV
-csv_file="$binary_file_path/sar-$CURRENT_DATE.csv"
+csv_file="$binary_file_path/sar-$DATE.csv"
 sudo sadf -d -T "$binary_file" -- -u > "$csv_file"
 
 sed -i 's/,/./g' "$csv_file"
