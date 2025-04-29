@@ -5,12 +5,16 @@ import string
 import sys
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
+from dotenv import load_dotenv
 
-# Configuration InfluxDB
-influx_url = "http://localhost:8086"
-token = os.environ.get("INFLUXDB_TOKEN")
-org = "GCU asso"
-bucket = sys.argv[1]
+load_dotenv()
+
+# Configuration InfluxDB depuis le fichier .env
+influx_url = os.getenv("INFLUXDB_URL")
+token = os.getenv("INFLUXDB_TOKEN")
+org = os.getenv("INFLUXDB_ORG")
+
+bucket = sys_argv[1]
 csv_file = sys.argv[2]
 
 # Connexion à InfluxDB
