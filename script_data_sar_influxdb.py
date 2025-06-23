@@ -13,9 +13,10 @@ load_dotenv()
 influx_url = os.getenv("INFLUXDB_URL")
 token = os.getenv("INFLUXDB_TOKEN")
 org = os.getenv("INFLUXDB_ORG")
-
+csv_directory = "/home/gcu/sar/sar/"
 bucket = sys.argv[1]
-csv_file = sys.argv[2]
+csv_filename = sys.argv[2]
+csv_file = os.path.join(csv_directory, csv_filename)
 
 # Connexion à InfluxDB
 client = InfluxDBClient(url=influx_url, token=token, org=org)
