@@ -13,7 +13,7 @@ echo "Mois : $month"
 echo "Jour : $day"
 
 # Chemin du fichier binaire (1er argument du script)
-binary_file_path="$1/$year/$month"
+binary_file_path="/home/gcu/sar/sar/$1/$year/$month"
 
 # Vérification que le répertoire existe
 if [ ! -d "$binary_file_path" ]; then
@@ -43,4 +43,4 @@ else
     exit 1
 fi
 
-python3 script_data_influx.py "$1" "$csv_file"
+/root/influx_env/bin/python3 /home/gcu/sar/sar/script_data_sar_influxdb.py "$1" "$csv_file"
